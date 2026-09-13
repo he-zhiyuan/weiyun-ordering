@@ -9,8 +9,8 @@ spring:
     port: ${sky.redis.port}
     password: ${sky.redis.password}
     database: ${sky.redis.database}
-  main: true
-    allow-circular-references:
+  main:
+    allow-circular-references: true
   datasource:
     druid:
       driver-class-name: ${sky.datasource.driver-class-name}
