@@ -1,49 +1,44 @@
 <template>
   <div class="login">
     <div class="login-box">
-      <img src="@/assets/login/login-l.png" alt="" />
-      <div class="login-form">
-        <el-form ref="loginForm" :model="loginForm" :rules="loginRules">
-          <div class="login-form-title">
-            <img
-              src="@/assets/login/icon_logo.png"
-              style="width: 149px; height: 38px"
-              alt=""
-            />
-          </div>
-          <el-form-item prop="username">
-            <el-input
-              v-model="loginForm.username"
-              type="text"
-              auto-complete="off"
-              placeholder="账号"
-              prefix-icon="iconfont icon-user"
-            />
-          </el-form-item>
-          <el-form-item prop="password">
-            <el-input
-              v-model="loginForm.password"
-              type="password"
-              placeholder="密码"
-              prefix-icon="iconfont icon-lock"
-              @keyup.enter.native="handleLogin"
-            />
-          </el-form-item>
-          <el-form-item style="width: 100%">
-            <el-button
-              :loading="loading"
-              class="login-btn"
-              size="medium"
-              type="primary"
-              style="width: 100%"
-              @click.native.prevent="handleLogin"
-            >
-              <span v-if="!loading">登录</span>
-              <span v-else>登录中...</span>
-            </el-button>
-          </el-form-item>
-        </el-form>
+      <div class="login-form-title">
+        <BrandLogo style="width: 40px; height: 40px" />
+        <span class="title-label">味云点餐</span>
       </div>
+      <p class="login-subtitle">餐饮管理系统</p>
+      <el-form ref="loginForm" :model="loginForm" :rules="loginRules">
+        <el-form-item prop="username">
+          <el-input
+            v-model="loginForm.username"
+            type="text"
+            auto-complete="off"
+            placeholder="账号"
+            prefix-icon="iconfont icon-user"
+          />
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            v-model="loginForm.password"
+            type="password"
+            placeholder="密码"
+            prefix-icon="iconfont icon-lock"
+            @keyup.enter.native="handleLogin"
+          />
+        </el-form-item>
+        <el-form-item style="width: 100%">
+          <el-button
+            :loading="loading"
+            class="login-btn"
+            size="medium"
+            type="primary"
+            style="width: 100%"
+            @click.native.prevent="handleLogin"
+          >
+            <span v-if="!loading">登录</span>
+            <span v-else>登录中...</span>
+          </el-button>
+        </el-form-item>
+      </el-form>
     </div>
   </div>
 </template>
@@ -54,9 +49,13 @@ import { Route } from 'vue-router'
 import { Form as ElForm, Input } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
 import { isValidUsername } from '@/utils/validate'
+import BrandLogo from '@/components/BrandLogo.vue'
 
 @Component({
   name: 'Login',
+  components: {
+    BrandLogo,
+  },
 })
 export default class extends Vue {
   private validateUsername = (rule: any, value: string, callback: Function) => {
@@ -123,37 +122,18 @@ export default class extends Vue {
   justify-content: center;
   align-items: center;
   height: 100%;
-  // background: #476dbe;
-  background-color: #333;
+  background: linear-gradient(135deg, #eaf2fc 0%, #d3e4fb 100%);
 }
 
 .login-box {
-  width: 1000px;
-  height: 474.38px;
-  border-radius: 8px;
-  display: flex;
-  img {
-    width: 60%;
-    height: auto;
-  }
-}
-
-.title {
-  margin: 0px auto 10px auto;
-  text-align: left;
-  color: #707070;
-}
-
-.login-form {
+  width: 380px;
+  padding: 48px 40px 32px;
+  border-radius: 12px;
   background: #ffffff;
-  width: 40%;
-  border-radius: 0px 8px 8px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  box-shadow: 0 10px 40px rgba(30, 95, 168, 0.14);
   .el-form {
-    width: 214px;
-    height: 307px;
+    width: 100%;
+    margin-top: 32px;
   }
   .el-form-item {
     margin-bottom: 30px;
@@ -195,6 +175,13 @@ export default class extends Vue {
   }
 }
 
+.login-subtitle {
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+  margin: 0;
+}
+
 .login-btn {
   border-radius: 17px;
   padding: 11px 20px !important;
@@ -214,16 +201,16 @@ export default class extends Vue {
   }
 }
 .login-form-title {
-  height: 36px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
   .title-label {
-    font-weight: 500;
-    font-size: 20px;
-    color: #333333;
+    font-weight: 600;
+    font-size: 22px;
+    color: #1e5fa8;
     margin-left: 10px;
+    display: inline-block;
   }
 }
 </style>

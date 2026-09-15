@@ -1,16 +1,6 @@
 <template>
   <div>
     <div class="logo">
-      <!-- <img
-        src="./../../../assets/logo.png"
-        width="122.5"
-        alt=""
-      > -->
-      <!-- <img
-        src="@/assets/login/login-logo.png"
-        alt=""
-        style="width: 120px; height: 31px"
-      /> -->
       <div v-if="!isCollapse"
            class="sidebar-logo">
         <BrandLogo style="width: 28px; height: 28px; vertical-align: middle;" />
@@ -161,7 +151,8 @@ export default class extends Vue {
 }
 .el-scrollbar {
   height: 100%;
-  background-color: rgb(52, 55, 68);
+  background-color: #ffffff;
+  box-shadow: 1px 0 0 #eef1f6;
 }
 
 .el-menu {

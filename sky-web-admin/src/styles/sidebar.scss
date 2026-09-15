@@ -5,7 +5,7 @@
     width: 100% !important;
 
     .el-menu-item {
-      color: #aeb5c4;
+      color: #5a6b82;
       height: 42px;
       line-height: 38px;
       padding: 0 0 0 17px !important;
@@ -13,56 +13,56 @@
 
       // border-radius: 0 21px 21px 0 !important;
       &:hover {
-        color: #ffffff !important;
-        background: #4D4D4D !important;
+        color: #1e5fa8 !important;
+        background: #eaf2fc !important;
         border-radius: 4px;
 
         span {
-          color: #ffffff !important;
+          color: #1e5fa8 !important;
         }
       }
 
       &:active {
-        color: #333333 !important;
+        color: #1e5fa8 !important;
         background-color: transparent !important;
 
         span {
-          color: #333333 !important;
+          color: #1e5fa8 !important;
         }
       }
     }
 
     .router-link-active .el-menu-item {
-      background-color: #E3E3E3 !important;
-      color: #333333 !important;
+      background-color: #eaf2fc !important;
+      color: #1e5fa8 !important;
       border-radius: 4px !important;
 
       span {
-        color: #333333 !important;
+        color: #1e5fa8 !important;
         font-weight: 500 !important;
       }
     }
 
     .is-active {
-      color: rgb(191, 203, 217) !important;
+      color: #1e5fa8 !important;
     }
   }
 
   .el-submenu.is-active {
     >.el-submenu__title {
-      color: #f4f4f5 !important;
+      color: #1e5fa8 !important;
     }
   }
 
   .el-submenu {
     >.el-submenu__title {
       min-width: 190px !important;
-      background-color: #272a36 !important;
+      background-color: #f7f9fc !important;
     }
 
     .el-menu-item {
       min-width: 190px !important;
-      background-color: #272a36 !important;
+      background-color: #f7f9fc !important;
     }
   }
 
@@ -107,7 +107,7 @@
 
   .el-icon-arrow-down {
     &:before {
-      color: #fff;
+      color: #5a6b82;
     }
   }
 
@@ -162,7 +162,7 @@
     padding-left: 0 !important;
 
     &:hover {
-      background-color: #4D4D4D !important;
+      background-color: #eaf2fc !important;
     }
 
     i {
@@ -172,11 +172,11 @@
 
   .sidebar-container .router-link-active .el-menu-item,
   .el-menu-item.is-active {
-    background-color: #E3E3E3 !important;
+    background-color: #eaf2fc !important;
   }
 
   .sidebar-container .router-link-active .el-menu-item:hover,
   .el-menu-item.is-active {
-    background-color: #1E5FA8 !important;
+    background-color: #dceaff !important;
   }
 }
