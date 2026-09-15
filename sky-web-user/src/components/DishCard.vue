@@ -1,6 +1,6 @@
 <template>
   <div class="dish-card">
-    <img class="thumb" :src="item.image" />
+    <img class="thumb" :src="item.image || DISH_PLACEHOLDER" @error="onImageError" />
     <div class="info">
       <div class="name">{{ item.name }}</div>
       <div class="desc">{{ item.description }}</div>
@@ -27,7 +27,7 @@
 
     <el-dialog v-if="type === 'setmeal'" v-model="showDetail" title="套餐详情" width="420px">
       <div v-for="d in setmealDishes" :key="d.name" class="setmeal-dish-row">
-        <img :src="d.image" />
+        <img :src="d.image || DISH_PLACEHOLDER" @error="onImageError" />
         <div class="setmeal-dish-info">
           <div>{{ d.name }} x{{ d.copies }}</div>
           <div class="setmeal-dish-desc">{{ d.description }}</div>
@@ -43,6 +43,7 @@ import { Plus, Minus } from '@element-plus/icons-vue'
 import { addToCart, subCart } from '../api/cart'
 import { getSetmealDishes } from '../api/setmeal'
 import { useCartStore } from '../store/cart'
+import { DISH_PLACEHOLDER, onImageError } from '../utils/image'
 import FlavorPicker from './FlavorPicker.vue'
 
 const props = defineProps({

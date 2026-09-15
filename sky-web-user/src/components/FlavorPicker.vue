@@ -2,7 +2,7 @@
   <el-dialog v-model="visible" title="选择口味" width="420px" @closed="onClosed">
     <div v-if="dish" class="flavor-body">
       <div class="dish-brief">
-        <img :src="dish.image" />
+        <img :src="dish.image || DISH_PLACEHOLDER" @error="onImageError" />
         <div>
           <div class="name">{{ dish.name }}</div>
           <div class="price">¥{{ dish.price }}</div>
@@ -29,6 +29,7 @@ import { computed, reactive, ref, watch } from 'vue'
 import { ElMessage } from 'element-plus'
 import { addToCart } from '../api/cart'
 import { useCartStore } from '../store/cart'
+import { DISH_PLACEHOLDER, onImageError } from '../utils/image'
 
 const props = defineProps({
   modelValue: { type: Boolean, default: false },

@@ -23,7 +23,7 @@
       <section class="card">
         <div class="card-title">商品清单</div>
         <div v-for="d in order.orderDetailList" :key="d.id" class="dish-row">
-          <img :src="d.image" />
+          <img :src="d.image || DISH_PLACEHOLDER" @error="onImageError" />
           <div class="dish-row-info">
             <div>{{ d.name }}</div>
             <div v-if="d.dishFlavor" class="flavor">{{ d.dishFlavor }}</div>
@@ -67,6 +67,7 @@ import {
 import { getShopPhone } from '../api/shop'
 import { useCartStore } from '../store/cart'
 import { useOrderStore } from '../store/order'
+import { DISH_PLACEHOLDER, onImageError } from '../utils/image'
 
 const STATUS_MAP = {
   1: '待付款',

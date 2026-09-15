@@ -8,7 +8,7 @@
         </div>
         <div class="cart-panel-list">
           <div v-for="line in cartStore.list" :key="line.id" class="cart-line">
-            <img :src="line.image" />
+            <img :src="line.image || DISH_PLACEHOLDER" @error="onImageError" />
             <div class="cart-line-info">
               <div class="cart-line-name">{{ line.name }}</div>
               <div v-if="line.dishFlavor" class="cart-line-flavor">{{ line.dishFlavor }}</div>
@@ -51,6 +51,7 @@ import { ElMessageBox, ElMessage } from 'element-plus'
 import { Plus, Minus, ShoppingCart } from '@element-plus/icons-vue'
 import { addToCart, subCart, cleanCart } from '../api/cart'
 import { useCartStore } from '../store/cart'
+import { DISH_PLACEHOLDER, onImageError } from '../utils/image'
 
 const router = useRouter()
 const cartStore = useCartStore()

@@ -35,7 +35,7 @@
       <section class="card">
         <div class="card-title">商品清单</div>
         <div v-for="line in cartStore.list" :key="line.id" class="dish-row">
-          <img :src="line.image" />
+          <img :src="line.image || DISH_PLACEHOLDER" @error="onImageError" />
           <div class="dish-row-info">
             <div>{{ line.name }}</div>
             <div v-if="line.dishFlavor" class="flavor">{{ line.dishFlavor }}</div>
@@ -109,6 +109,7 @@ import { getAddressList } from '../api/address'
 import { submitOrder } from '../api/order'
 import { useCartStore } from '../store/cart'
 import { useOrderStore } from '../store/order'
+import { DISH_PLACEHOLDER, onImageError } from '../utils/image'
 import RemarkDialog from '../components/RemarkDialog.vue'
 
 const DELIVERY_FEE = 6
