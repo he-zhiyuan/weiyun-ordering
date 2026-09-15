@@ -93,8 +93,8 @@ export default class extends Vue {
                 0, // 渐变色的起止位置, 右/下/左/上
                 [
                   // offset 位置
-                  { offset: 0, color: '#FFBD00' },
-                  { offset: 1, color: '#FFD000' },
+                  { offset: 0, color: '#1E5FA8' },
+                  { offset: 1, color: '#4E8CFF' },
                 ]
               ),
               label: {

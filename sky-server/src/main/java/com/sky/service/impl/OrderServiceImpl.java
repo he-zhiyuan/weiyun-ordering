@@ -167,7 +167,7 @@ public class OrderServiceImpl implements OrderService {
         JSONObject jsonObject = weChatPayUtil.pay(
                 orderNumber,
                 ordersDB.getAmount(),
-                "苍穹外卖订单",
+                "味云点餐订单",
                 user.getOpenid()
         );
 

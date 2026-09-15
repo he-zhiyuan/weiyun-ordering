@@ -1,3 +1,8 @@
+:root {
+  --brand-primary: #1E5FA8;
+  --brand-primary-light: #4E8CFF;
+}
+
 html,
 body,
 #app {

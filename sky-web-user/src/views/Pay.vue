@@ -163,8 +163,8 @@ onBeforeUnmount(() => {
   cursor: pointer;
 }
 .method-item.active {
-  border-color: #ff9800;
-  color: #ff9800;
-  background: #fff7ec;
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  background: #eaf2fc;
 }
 </style>

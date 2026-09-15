@@ -13,12 +13,12 @@
       /> -->
       <div v-if="!isCollapse"
            class="sidebar-logo">
-        <img src="@/assets/login/logo.png"
-             style="width: 120px; height: 31px">
+        <BrandLogo style="width: 28px; height: 28px; vertical-align: middle;" />
+        <span class="sidebar-logo-text">味云点餐</span>
       </div>
       <div v-else
            class="sidebar-logo-mini">
-        <img src="@/assets/login/mini-logo.png">
+        <BrandLogo />
       </div>
     </div>
     <el-scrollbar wrap-class="scrollbar-wrapper">
@@ -59,13 +59,15 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import { AppModule } from '@/store/modules/app'
 import { UserModule } from '@/store/modules/user'
 import SidebarItem from './SidebarItem.vue'
+import BrandLogo from '@/components/BrandLogo.vue'
 import variables from '@/styles/_variables.scss'
 import { getSidebarStatus, setSidebarStatus } from '@/utils/cookies'
 import Cookies from 'js-cookie'
 @Component({
   name: 'SideBar',
   components: {
-    SidebarItem
+    SidebarItem,
+    BrandLogo
   }
 })
 export default class extends Vue {
@@ -135,18 +137,27 @@ export default class extends Vue {
 <style lang="scss" scoped>
 .logo {
   text-align: center;
-  background-color: #ffc100;
+  background-color: #1E5FA8;
   padding: 15px 0 0;
   height: 60px;
-  img {
+  .brand-logo {
     display: inline-block;
   }
 }
 .sidebar-logo-mini {
-  img {
+  .brand-logo {
     width: 30px;
     height: 30px;
   }
+}
+.sidebar-logo-text {
+  display: inline-block;
+  margin-left: 8px;
+  vertical-align: middle;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 .el-scrollbar {
   height: 100%;

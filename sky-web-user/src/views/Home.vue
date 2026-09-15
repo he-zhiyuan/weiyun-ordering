@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <header class="navbar">
-      <div class="brand">苍穹外卖</div>
+      <div class="brand">味云点餐</div>
       <div class="shop-status">
         <el-tag :type="shopOpen ? 'success' : 'info'" effect="dark">
           {{ shopOpen ? '营业中' : '已打烊' }}
@@ -143,7 +143,7 @@ onMounted(() => {
 .brand {
   font-size: 20px;
   font-weight: 700;
-  color: #ff9800;
+  color: var(--brand-primary);
 }
 .shop-status {
   display: flex;
@@ -188,10 +188,10 @@ onMounted(() => {
   background: #f5f5f5;
 }
 .category-item.active {
-  background: #fff7ec;
-  color: #ff9800;
+  background: #eaf2fc;
+  color: var(--brand-primary);
   font-weight: 600;
-  border-left-color: #ff9800;
+  border-left-color: var(--brand-primary);
 }
 .dish-grid {
   flex: 1;

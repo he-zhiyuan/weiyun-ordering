@@ -993,8 +993,8 @@ export default class extends Vue {
     .user-remark {
       min-height: 43px;
       line-height: 43px;
-      background: #fffbf0;
-      border: 1px solid #fbe396;
+      background: #eaf2fc;
+      border: 1px solid #b8d4f0;
       border-radius: 4px;
       margin-top: 10px;
       padding: 6px;
@@ -1004,7 +1004,7 @@ export default class extends Vue {
         display: inline-block;
         min-width: 53px;
         height: 32px;
-        background: #fbe396;
+        background: #b8d4f0;
         border-radius: 4px;
         text-align: center;
         line-height: 32px;

@@ -1,7 +1,7 @@
 <template>
   <div class="login-page">
     <div class="login-card">
-      <h1 class="brand">苍穹外卖</h1>
+      <h1 class="brand">味云点餐</h1>
       <p class="subtitle">Web 端点餐（演示登录，仅需手机号）</p>
       <el-form :model="form" :rules="rules" ref="formRef" @submit.prevent>
         <el-form-item prop="phone">
@@ -79,7 +79,7 @@ async function handleLogin() {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-primary-light));
 }
 
 .login-card {
@@ -94,7 +94,7 @@ async function handleLogin() {
 .brand {
   margin: 0 0 8px;
   font-size: 28px;
-  color: #ff9800;
+  color: var(--brand-primary);
 }
 
 .subtitle {

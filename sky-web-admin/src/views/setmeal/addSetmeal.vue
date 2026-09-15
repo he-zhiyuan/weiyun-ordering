@@ -455,7 +455,7 @@ export default class extends Vue {
   }
 
   .avatar-uploader .el-upload:hover {
-    border-color: #ffc200;
+    border-color: #1e5fa8;
   }
 
   .avatar-uploader-icon {
@@ -496,17 +496,17 @@ export default class extends Vue {
     }
 
     .el-input-number__increase {
-      border-left: solid 1px #fbe396;
-      background: #fffbf0;
+      border-left: solid 1px #b8d4f0;
+      background: #eaf2fc;
     }
 
     .el-input-number__decrease {
-      border-right: solid 1px #fbe396;
-      background: #fffbf0;
+      border-right: solid 1px #b8d4f0;
+      background: #eaf2fc;
     }
 
     input {
-      border: 1px solid #fbe396;
+      border: 1px solid #b8d4f0;
     }
 
     .table {
@@ -572,7 +572,7 @@ export default class extends Vue {
         width: 777px;
 
         .addBut {
-          background: #ffc200;
+          background: #1e5fa8;
           display: inline-block;
           padding: 0px 20px;
           border-radius: 3px;

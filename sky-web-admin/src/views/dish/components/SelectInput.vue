@@ -85,11 +85,11 @@ export default class extends Vue {
       color: #666;
       margin: 0 !important;
       &:hover {
-        background-color: #fffbf0;
+        background-color: #eaf2fc;
       }
       &:active {
-        background-color: #fffbf0;
-        color: #ffc200;
+        background-color: #eaf2fc;
+        color: #1e5fa8;
       }
     }
     .none {

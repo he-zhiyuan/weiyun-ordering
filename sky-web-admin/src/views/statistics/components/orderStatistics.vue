@@ -133,15 +133,15 @@ export default class extends Vue {
           // symbol:"circle", //设置折线点定位实心点
           itemStyle: {
             normal: {
-              color: '#FFD000',
+              color: '#1E5FA8',
               lineStyle: {
-                color: '#FFD000',
+                color: '#1E5FA8',
               },
             },
             emphasis: {
               color: '#fff',
               borderWidth: 5,
-              borderColor: '#FFC100',
+              borderColor: '#4E8CFF',
             },
           },
 

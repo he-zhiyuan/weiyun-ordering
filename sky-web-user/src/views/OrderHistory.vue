@@ -211,7 +211,7 @@ onMounted(() => {
 .status-2,
 .status-3,
 .status-4 {
-  color: #ff9800;
+  color: var(--brand-primary);
 }
 .status-5 {
   color: #67c23a;

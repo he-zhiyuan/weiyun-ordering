@@ -1,0 +1,16 @@
+<template>
+  <svg class="brand-logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="brandLogoGradient" x1="0" y1="0" x2="32" y2="32">
+        <stop offset="0" stop-color="#1E5FA8" />
+        <stop offset="1" stop-color="#4E8CFF" />
+      </linearGradient>
+    </defs>
+    <circle cx="16" cy="16" r="16" fill="url(#brandLogoGradient)" />
+    <path d="M8 15h16" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+    <path d="M9 15c0 4 3 7 7 7s7-3 7-7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+    <path d="M13 9c0 1.2-1 1.4-1 2.6" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity="0.85" />
+    <path d="M17 8.6c0 1.2-1 1.4-1 2.6" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity="0.85" />
+    <path d="M21 9c0 1.2-1 1.4-1 2.6" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity="0.85" />
+  </svg>
+</template>

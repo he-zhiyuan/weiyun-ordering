@@ -132,7 +132,7 @@ async function handleSub() {
 }
 .setmeal-link {
   font-size: 12px;
-  color: #ff9800;
+  color: var(--brand-primary);
   cursor: pointer;
   margin-top: 4px;
 }

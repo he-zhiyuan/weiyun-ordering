@@ -204,7 +204,7 @@ onBeforeUnmount(() => {
 .status-text {
   font-size: 20px;
   font-weight: 700;
-  color: #ff9800;
+  color: var(--brand-primary);
 }
 .countdown {
   margin-top: 8px;
