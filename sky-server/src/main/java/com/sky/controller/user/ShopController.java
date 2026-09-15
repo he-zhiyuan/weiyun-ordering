@@ -5,6 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,9 @@ public class ShopController {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    @Value("${sky.shop.phone}")
+    private String shopPhone;
+
     /**
      * 获取店铺的营业状态
      *
@@ -32,5 +36,16 @@ public class ShopController {
         Integer status = (Integer) redisTemplate.opsForValue().get(KEY);
         log.info("获取到店铺的营业状态为：{}", status == 1 ? "营业中" : "打烊中");
         return Result.success(status);
+    }
+
+    /**
+     * 获取店铺联系电话
+     *
+     * @return
+     */
+    @GetMapping("/phone")
+    @ApiOperation("获取店铺联系电话")
+    public Result<String> getPhone() {
+        return Result.success(shopPhone);
     }
 }

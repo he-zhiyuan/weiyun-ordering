@@ -2,6 +2,7 @@ package com.sky.controller.user;
 
 import com.sky.constant.JwtClaimsConstant;
 import com.sky.dto.UserLoginDTO;
+import com.sky.dto.WebUserLoginDTO;
 import com.sky.entity.User;
 import com.sky.properties.JwtProperties;
 import com.sky.result.Result;
@@ -46,6 +47,31 @@ public class UserController {
         User user = userService.wxLogin(userLoginDTO);
 
         // 为微信用户生成jwt令牌
+        Map<String, Object> claims = new HashMap<>();
+        claims.put(JwtClaimsConstant.USER_ID, user.getId());
+        String token = JwtUtil.createJWT(jwtProperties.getUserSecretKey(), jwtProperties.getUserTtl(), claims);
+
+        UserLoginVO userLoginVO = UserLoginVO.builder()
+                .id(user.getId())
+                .openid(user.getOpenid())
+                .token(token)
+                .build();
+        return Result.success(userLoginVO);
+    }
+
+    /**
+     * Web端登录（演示用，免验证码，手机号直接登录/注册）
+     *
+     * @param webUserLoginDTO
+     * @return
+     */
+    @PostMapping("/webLogin")
+    @ApiOperation("Web端登录（演示用，免验证码）")
+    public Result<UserLoginVO> webLogin(@RequestBody WebUserLoginDTO webUserLoginDTO) {
+        log.info("Web端用户登录：{}", webUserLoginDTO.getPhone());
+
+        User user = userService.webLogin(webUserLoginDTO);
+
         Map<String, Object> claims = new HashMap<>();
         claims.put(JwtClaimsConstant.USER_ID, user.getId());
         String token = JwtUtil.createJWT(jwtProperties.getUserSecretKey(), jwtProperties.getUserTtl(), claims);

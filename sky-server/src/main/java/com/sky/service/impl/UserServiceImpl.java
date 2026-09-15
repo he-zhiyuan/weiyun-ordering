@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sky.constant.MessageConstant;
 import com.sky.dto.UserLoginDTO;
+import com.sky.dto.WebUserLoginDTO;
 import com.sky.entity.User;
 import com.sky.exception.LoginFailedException;
 import com.sky.mapper.UserMapper;
@@ -51,6 +52,35 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             user = User.builder()
                     .openid(openid)
+                    .createTime(LocalDateTime.now())
+                    .build();
+            userMapper.insert(user);
+        }
+
+        // 返回这个用户对象
+        return user;
+    }
+
+    /**
+     * Web端登录（演示用，免验证码，手机号直接登录/注册）
+     *
+     * @param webUserLoginDTO
+     * @return
+     */
+    public User webLogin(WebUserLoginDTO webUserLoginDTO) {
+        String phone = webUserLoginDTO.getPhone();
+        if (phone == null || phone.trim().isEmpty()) {
+            throw new LoginFailedException("手机号不能为空");
+        }
+
+        // 判断当前用户是否为新用户
+        User user = userMapper.getByPhone(phone);
+
+        // 如果是新用户，自动完成注册
+        if (user == null) {
+            user = User.builder()
+                    .phone(phone)
+                    .name(webUserLoginDTO.getName())
                     .createTime(LocalDateTime.now())
                     .build();
             userMapper.insert(user);
