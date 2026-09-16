@@ -108,3 +108,7 @@ redis-cli -h <host> -p <port> -a <password> --no-auth-warning flushdb
 ### 6. 管理端提示"服务器错误，无法接收实时报警信息"
 
 这是管理端 WebSocket（来单提醒/催单提示音）连接失败时的报错（`weiyun-web-admin/src/layout/components/Navbar/index.vue` 里 `websocket.onerror`）。根因是 `weiyun-web-admin/.env.production` 里 `VUE_APP_SOCKET_URL` 从项目模板继承下来就是空字符串，导致拼出来的 WebSocket 地址不是一个合法的 `ws://`/`wss://` URL。现在已经改成：`VUE_APP_SOCKET_URL` 留空时，前端会根据当前页面的协议和 host 自动拼出 `ws(s)://<当前host>/ws/<clientId>`（管理端 nginx 站点本身就把 `/ws/` 代理到了后端），不再依赖构建时写死某个具体域名/IP，换服务器也不需要重新改这个环境变量再构建。
+
+### 7. 用户端首页/订单详情客服电话是空的
+
+和第 5 条同一类根因：`sky.shop.phone` 这个值本来只在 `application-dev.yml`（不会部署到服务器）里写着示例号码，生产环境实际用的 `application.yml` 里这一项一直是空字符串 `""`，`/user/shop/phone` 接口就会原样返回空值。现在已经把 `application.yml` 里的 `sky.shop.phone` 从 `""` 改成占位模拟号码 `"400-000-0000"`。如果部署到真实商户环境，把这一项改成真实客服电话即可，不需要额外的环境变量（这个值不敏感，没必要走 `server.env`）。

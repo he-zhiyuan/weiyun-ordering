@@ -50,7 +50,7 @@ sky:
     user-token-name: authentication
 
   shop:
-    phone: ""
+    phone: "400-000-0000"
 
   alioss:
     endpoint: ""
