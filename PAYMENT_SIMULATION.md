@@ -1,6 +1,6 @@
 # 模拟支付说明
 
-项目支持通过配置切换真实微信支付和本地模拟支付。开发环境 `sky-server/src/main/resources/application-dev.yml` 已设置：
+项目支持通过配置切换真实微信支付和本地模拟支付。开发环境 `weiyun-server/src/main/resources/application-dev.yml` 已设置：
 
 ```yaml
 sky:
