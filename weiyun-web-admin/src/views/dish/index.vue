@@ -41,13 +41,6 @@
         <div class="tableLab">
           <span class="delBut non"
                 @click="deleteHandle('批量', null)">批量删除</span>
-          <!-- <span class="blueBug non" @click="statusHandle('1')">批量启售</span>
-          <span
-            style="border: none"
-            class="delBut non"
-            @click="statusHandle('0')"
-            >批量停售</span
-          > -->
           <el-button type="primary"
                      style="margin-left: 15px"
                      @click="addDishtype('add')">
