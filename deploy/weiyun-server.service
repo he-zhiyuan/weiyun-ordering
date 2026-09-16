@@ -1,0 +1,19 @@
+# systemd 单元模板，安装到 /etc/systemd/system/weiyun-server.service
+# 如果代码不是部署在 /opt/weiyun-ordering，需要同步修改下面的 WorkingDirectory 和 ExecStart 两行路径。
+[Unit]
+Description=Weiyun Ordering Spring Boot Backend
+After=network.target mysql.service redis-server.service
+Wants=mysql.service redis-server.service
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/weiyun-ordering/weiyun-server
+EnvironmentFile=/etc/sky-take-out/server.env
+ExecStart=/usr/bin/java -jar /opt/weiyun-ordering/weiyun-server/target/weiyun-server-1.0-SNAPSHOT.jar --server.address=127.0.0.1
+Restart=on-failure
+RestartSec=5
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
