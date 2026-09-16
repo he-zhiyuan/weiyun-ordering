@@ -17,8 +17,6 @@
             :index="resolvePath(theOnlyOneChild.path)"
             :class="{ 'submenu-title-noDropdown': isFirstLevel }"
           >
-            <!-- <i v-if="theOnlyOneChild.meta.title==='工作台'" class="iconfont icon img-icon-sel" /> -->
-            <!-- <svg-icon v-if="theOnlyOneChild.meta.title==='工作台'" name="dashboard" width="20" height="20"></svg-icon> -->
             <i
               v-if="theOnlyOneChild.meta.icon"
               class="iconfont"
