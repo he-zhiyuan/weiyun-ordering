@@ -100,3 +100,11 @@ redis-cli -h <host> -p <port> -a <password> --no-auth-warning flushdb
 ### 4. 换到另一台服务器，路径不是 `/opt/weiyun-ordering`
 
 `deploy/weiyun-server.service` 里的 `WorkingDirectory`/`ExecStart`，以及 `deploy/deploy.sh` 里的 `REPO_DIR`，都硬编码了 `/opt/weiyun-ordering` 这个路径。如果实际安装路径不同，这几处需要同步手动改掉再安装/使用。
+
+### 5. 用户端支付报错"当前用户未绑定微信账号"
+
+本项目没有真实的微信支付商户资质，走的是内置的模拟支付分支（`OrderServiceImpl.payment()` 里 `weChatProperties.isMockPayment()` 为 `true` 时直接把订单标记为已支付，不调用微信支付接口，详见 [`PAYMENT_SIMULATION.md`](PAYMENT_SIMULATION.md)）。这个开关（`sky.wechat.mock-payment`）原本只在被 `.gitignore` 排除、不会部署到服务器的 `application-dev.yml` 里设成了 `true`，生产环境实际用的 `application.yml` 从未设置这一项，默认值 `false`，于是线上会真的尝试走微信支付、因为没有配置 `SKY_WECHAT_*` 环境变量 / 用户没有 `openid` 而报错。现在已经把 `mock-payment: true` 直接写进 `application.yml`（本项目定位是演示项目，没有接入真实微信商户，这个值不需要按环境区分）。如果以后要接入真实微信支付，把这一项改回 `false` 并在 `server.env` 里补全 `SKY_WECHAT_*` 系列变量即可。
+
+### 6. 管理端提示"服务器错误，无法接收实时报警信息"
+
+这是管理端 WebSocket（来单提醒/催单提示音）连接失败时的报错（`weiyun-web-admin/src/layout/components/Navbar/index.vue` 里 `websocket.onerror`）。根因是 `weiyun-web-admin/.env.production` 里 `VUE_APP_SOCKET_URL` 从项目模板继承下来就是空字符串，导致拼出来的 WebSocket 地址不是一个合法的 `ws://`/`wss://` URL。现在已经改成：`VUE_APP_SOCKET_URL` 留空时，前端会根据当前页面的协议和 host 自动拼出 `ws(s)://<当前host>/ws/<clientId>`（管理端 nginx 站点本身就把 `/ws/` 代理到了后端），不再依赖构建时写死某个具体域名/IP，换服务器也不需要重新改这个环境变量再构建。

@@ -171,7 +171,11 @@ export default class extends Vue {
   webSocket() {
     const that = this as any
     let clientId = Math.random().toString(36).substr(2)
-    let socketUrl = process.env.VUE_APP_SOCKET_URL + clientId
+    // VUE_APP_SOCKET_URL 留空时，根据当前页面的协议和host自动拼接，
+    // 避免每次换服务器/换域名都要重新构建前端
+    let socketUrl = process.env.VUE_APP_SOCKET_URL
+      ? process.env.VUE_APP_SOCKET_URL + clientId
+      : `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws/${clientId}`
     console.log(socketUrl, 'socketUrl')
     if (typeof WebSocket == 'undefined') {
       that.$notify({

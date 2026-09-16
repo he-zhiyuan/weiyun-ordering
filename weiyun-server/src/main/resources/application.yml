@@ -59,6 +59,7 @@ sky:
     bucket-name: ""
 
   wechat:
+    mock-payment: true
     appid: ""
     secret: ""
     mchid: ""
